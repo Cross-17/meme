@@ -41,7 +41,7 @@
                                 <rect key="frame" x="16" y="20" width="343" height="595"/>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wGw-M4-WoV">
-                                <rect key="frame" x="86" y="44" width="221" height="30"/>
+                                <rect key="frame" x="86" y="76" width="221" height="30"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -58,7 +58,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nhd-CT-5xf">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                 <items>
                                     <navigationItem id="Mbo-ak-g0O">
                                         <nil key="title"/>
@@ -76,7 +76,7 @@
                             <constraint firstItem="wGw-M4-WoV" firstAttribute="centerX" secondItem="Nhd-CT-5xf" secondAttribute="centerX" constant="9" id="3WC-KP-tTZ"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Yja-2t-I7Y" secondAttribute="bottom" constant="8" id="3WZ-cQ-VR3"/>
                             <constraint firstItem="MbK-q3-yT4" firstAttribute="centerX" secondItem="ssn-cs-UB6" secondAttribute="centerX" constant="9" id="4vY-bl-ytK"/>
-                            <constraint firstItem="ssn-cs-UB6" firstAttribute="top" secondItem="wGw-M4-WoV" secondAttribute="bottom" constant="-54" id="DcB-G7-aHd"/>
+                            <constraint firstItem="ssn-cs-UB6" firstAttribute="top" secondItem="wGw-M4-WoV" secondAttribute="bottom" constant="-86" id="DcB-G7-aHd"/>
                             <constraint firstItem="ssn-cs-UB6" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="KBj-TC-uaT"/>
                             <constraint firstItem="ssn-cs-UB6" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="KFb-9L-jaA"/>
                             <constraint firstAttribute="bottom" secondItem="MbK-q3-yT4" secondAttribute="bottom" constant="52" id="Kma-qF-rkV"/>
@@ -90,7 +90,8 @@
                             <constraint firstItem="MbK-q3-yT4" firstAttribute="centerX" secondItem="Yja-2t-I7Y" secondAttribute="centerX" constant="9" id="oSU-H4-CjQ"/>
                             <constraint firstItem="Yja-2t-I7Y" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="otS-TQ-BTW"/>
                             <constraint firstItem="Nhd-CT-5xf" firstAttribute="leading" secondItem="Yja-2t-I7Y" secondAttribute="leading" id="q9S-h1-A5X"/>
-                            <constraint firstItem="wGw-M4-WoV" firstAttribute="top" secondItem="Nhd-CT-5xf" secondAttribute="bottom" id="srT-xr-x6R"/>
+                            <constraint firstItem="wGw-M4-WoV" firstAttribute="top" secondItem="Nhd-CT-5xf" secondAttribute="bottom" constant="12" id="srT-xr-x6R"/>
+                            <constraint firstItem="Nhd-CT-5xf" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="xTz-Ms-NXe"/>
                         </constraints>
                     </view>
                     <connections>
@@ -105,7 +106,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="143.19999999999999" y="123.68815592203899"/>
+            <point key="canvasLocation" x="137" y="122"/>
         </scene>
     </scenes>
 </document>
