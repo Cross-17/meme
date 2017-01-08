@@ -10,7 +10,6 @@ import UIKit
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate {
     
-
     @IBOutlet weak var shareButton: UIBarButtonItem!
     @IBOutlet weak var navBar: UINavigationBar!
     @IBOutlet weak var toolBar: UIToolbar!
@@ -43,12 +42,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,UINaviga
         setupTextField(textField: botText)
         shareButton.isEnabled = false
     }
-    
-    override var prefersStatusBarHidden: Bool{
-        return true
-    }
-    
-
     
     override func viewWillAppear(_ animated: Bool){
         super.viewWillAppear(animated)
@@ -100,8 +93,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,UINaviga
     func generateMemedImage() -> UIImage {
         toolBar.isHidden = true
         navBar.isHidden = true
-        UIGraphicsBeginImageContext(self.view.frame.size)
-        view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
+        UIGraphicsBeginImageContext(view.frame.size)
+        view.drawHierarchy(in: view.frame, afterScreenUpdates: true)
         let memedImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         toolBar.isHidden = false
@@ -110,7 +103,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,UINaviga
     }
     
     @IBAction func share(_ sender: Any ){
-        print ("share")
         let memedImage: UIImage = generateMemedImage()
         
         let activityController = UIActivityViewController(activityItems: [memedImage], applicationActivities: nil)
@@ -146,7 +138,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,UINaviga
             ImageView.image = image
             shareButton.isEnabled = true
         }
-        self.dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
     // MARK: textfield delegate
     func textFieldDidBeginEditing(_ textField: UITextField) {
