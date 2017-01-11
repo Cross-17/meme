@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  EditViewController.swift
 //  Test
 //
 //  Created by 政达 何 on 2017/1/8.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate {
+class EditViewController: UIViewController, UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate {
     
     @IBOutlet weak var shareButton: UIBarButtonItem!
     @IBOutlet weak var navBar: UINavigationBar!
@@ -17,12 +17,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,UINaviga
     @IBOutlet weak var topText: UITextField!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     @IBOutlet weak var ImageView: UIImageView!
-    struct Meme{
-        let topText:String
-        let bottomText:String
-        let originalImage: UIImage
-        let memedImage: UIImage
-    }
 
     func setupTextField(textField: UITextField) {
         let memeTextAttributes:[String:Any] = [
@@ -32,7 +26,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,UINaviga
             NSStrokeWidthAttributeName: NSNumber(value: -3.0)]
         textField.defaultTextAttributes = memeTextAttributes
         textField.textAlignment = .center
-        textField.delegate = self;
+        textField.delegate = self
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,12 +41,16 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,UINaviga
         super.viewWillAppear(animated)
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
         subscribeToKeyboardNotifications()
+        self.tabBarController?.tabBar.isHidden = true
+        self.navigationController?.navigationBar.isHidden = true
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         
         super.viewWillDisappear(animated)
         unsubscribeFromKeyboardNotifications()
+        self.tabBarController?.tabBar.isHidden = false
+        self.navigationController?.navigationBar.isHidden = false
     }
     
     func keyboardWillShow(_ notification:Notification) {
@@ -87,8 +85,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,UINaviga
     // MARK: save&share image
     func save()  {
         let memmedImage = generateMemedImage()
-        _ = Meme(topText: topText.text!, bottomText: botText.text!, originalImage: ImageView.image!, memedImage: memmedImage)
-    }
+        let meme = Meme(topText: topText.text!, bottomText: botText.text!, originalImage: ImageView.image!, memedImage: memmedImage)
+        let object = UIApplication.shared.delegate
+        let appDelegate = object as! AppDelegate
+        appDelegate.memes.append(meme)    }
     
     func generateMemedImage() -> UIImage {
         toolBar.isHidden = true
@@ -111,11 +111,18 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,UINaviga
             activity, completed, items, error in
             if completed{
                 self.save()
-                self.dismiss(animated: true, completion: nil)
+                self.back()
             }
         }
         
         present(activityController, animated: true, completion: nil)
+    }
+    
+    @IBAction func back()
+    {
+        if let navigationController = self.navigationController {
+            navigationController.popToRootViewController(animated: true)
+        }
     }
     //MARK: pick photo
     
